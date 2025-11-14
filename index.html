@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VITTALE - Agência de Marketing Digital</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="ICONE WHITE.png">
+    
+    <!-- Google Fonts: Inter (perfeita para UI moderna) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Configuração Personalizada do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        // Nosso azul elétrico principal
+                        'vittale-blue': '#0F52FF', 
+                        // **NOVO** Azul claro para um gradiente mais suave
+                        'vittale-light-blue': '#58AFFF',
+                        // O fundo escuro principal
+                        'vittale-dark': '#0A0A10',
+                        
+                        // --- PRINCIPAL ATUALIZAÇÃO DE COR ---
+                        // O novo "branco" (tom de creme do logo)
+                        'white': '#FFF4D2',
+                        // Um branco puro, caso seja necessário
+                        'true-white': '#FFFFFF',
+                        
+                        // Sobreposição de "gray" para usar o tom de creme com opacidade
+                        'gray': {
+                            300: 'rgba(255, 244, 210, 0.85)', // Era text-gray-300
+                            400: 'rgba(255, 244, 210, 0.70)', // Era text-gray-400
+                        }
+                    },
+                    // Efeito de desfoque para o "glassmorphism"
+                    blur: {
+                        '4xl': '120px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Estilos Internos (CSS) -->
+    <style>
+        /* Base do corpo */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #0A0A10; /* vittale-dark */
+            /* **NOVO** Cor base do texto atualizada */
+            color: #FFF4D2; 
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Destaque de texto personalizado */
+        ::selection {
+            background-color: #0F52FF; /* vittale-blue */
+            color: #FFFFFF;
+        }
+
+        /* Efeito "Glassmorphism" para os cards (Atualizado) */
+        /* ATENÇÃO: Os estilos de .gradient-text, .glass-card, .btn-primary, .btn-secondary
+           foram movidos diretamente para o HTML para garantir a compatibilidade com a CDN. */
+
+        /* Animação de fade-in ao rolar */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s cubic-bezier(0.17, 0.55, 0.55, 1) 0.1s, transform 0.6s cubic-bezier(0.17, 0.55, 0.55, 1) 0.1s;
+        }
+        .fade-in-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Bolhas de Gradiente Decorativas (Efeito moderno) -->
+    <div class="absolute top-0 left-0 w-96 h-96 bg-vittale-blue rounded-full opacity-20 blur-4xl -translate-x-1/2"></div>
+    <!-- Gradiente atualizado -->
+    <div class="absolute top-1/2 right-0 w-[40rem] h-[40rem] bg-vittale-light-blue rounded-full opacity-10 blur-4xl"></div>
+
+    <!-- Wrapper Principal (para garantir que o conteúdo fique acima das bolhas) -->
+    <div class="relative z-10">
+
+        <!-- HEADER / NAVEGAÇÃO -->
+        <header id="header" class="fixed w-full top-0 z-50">
+            <nav class="container mx-auto px-6 py-5 flex justify-between items-center bg-vittale-dark/70 backdrop-blur-md rounded-b-3xl border-b border-l border-r border-white/10 shadow-lg">
+                <!-- Logo -->
+                <a href="#home" class="text-3xl font-black tracking-tighter">
+                    <!-- O logo 'logo-offwhite.png' agora combina perfeitamente -->
+                    <img src="logo-offwhite.png" alt="VITTALE Logo" class="h-8 w-auto">
+                </a>
+
+                <!-- Menu Desktop -->
+                <div class="hidden md:flex items-center space-x-8 font-semibold text-sm">
+                    <!-- text-white agora é #FFF4D2 -->
+                    <a href="#servicos" class="hover:text-white transition-colors">Serviços</a>
+                    <a href="#sobre" class="hover:text-white transition-colors">A Agência</a>
+                    <a href="#projetos" class="hover:text-white transition-colors">Projetos</a>
+                    <!-- bg-white agora é #FFF4D2 -->
+                    <!-- MUDADO: Efeito de hover atualizado para mais destaque -->
+                    <a href="https://wa.me/message/N4FRNLUCC7ZLL1" class="px-6 py-2 bg-white text-vittale-dark font-bold rounded-full text-xs transition-all duration-300 scale-100 hover:scale-105 hover:shadow-lg hover:brightness-105">
+                        Fale Conosco
+                    </a>
+                </div>
+
+                <!-- Botão Menu Mobile -->
+                <button id="menu-btn" class="md:hidden z-50">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </nav>
+            
+            <!-- Painel Menu Mobile -->
+            <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-vittale-dark/90 backdrop-blur-xl z-40">
+                <nav class="flex flex-col items-center justify-center h-full space-y-8 text-2xl font-bold">
+                    <a href="#servicos" class="nav-link">Serviços</a>
+                    <a href="#sobre" class="nav-link">A Agência</a>
+                    <a href="#projetos" class="nav-link">Projetos</a>
+                    <!-- BOTÃO PRIMÁRIO ATUALIZADO -->
+                    <a href="#contato" class="px-8 py-3 bg-gradient-to-r from-vittale-blue to-vittale-light-blue text-true-white font-bold rounded-full transition-all duration-300 shadow-lg shadow-vittale-blue/30 hover:scale-105 hover:shadow-xl hover:shadow-vittale-blue/50 hover:brightness-110 mt-8 ">Fale Conosco</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- SEÇÃO 1: HERO -->
+        <section id="home" class=" flex items-center pt-32 pb-12 px-6">
+            <div class="container mx-auto text-center max-w-5xl">
+                <!-- Imagem do logo -->
+                <img src="logo-offwhite.png" alt="Logo VITTALE" 
+                     class="mx-auto mb-8 h-24 w-auto shadow-xl fade-in">
+
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-none mb-8 fade-in" style="animation-delay: 0.2s;">
+                    Elevamos sua marca
+                    <br>
+                    ao <span class="bg-clip-text text-transparent bg-gradient-to-r from-vittale-blue to-vittale-light-blue">próximo nível</span>
+                </h1>
+                <!-- text-gray-300 agora é o novo tom com opacidade -->
+                <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto fade-in" style="animation-delay: 0.4s;">
+                    Somos a VITTALE. A agência de marketing digital que transforma cliques em resultados reais.
+                </p>
+                <div class="flex flex-col md:flex-row justify-center gap-4 fade-in" style="animation-delay: 0.6s;">
+                    <!-- BOTÃO PRIMÁRIO ATUALIZADO -->
+                    <a href="#contato" class="px-8 py-3 bg-gradient-to-r from-vittale-blue to-vittale-light-blue text-true-white font-bold rounded-full transition-all duration-300 shadow-lg shadow-vittale-blue/30 hover:scale-105 hover:shadow-xl hover:shadow-vittale-blue/50 hover:brightness-110">
+                        Começar um Projeto
+                    </a>
+                    <!-- BOTÃO SECUNDÁRIO ATUALIZADO -->
+                    <a href="#servicos" class="px-8 py-3 bg-transparent border-2 border-white/30 text-white font-bold rounded-full transition-all duration-300 hover:scale-105 hover:bg-white/10 hover:border-white/50">
+                        Nossas Soluções
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 2: SERVIÇOS -->
+        <section id="servicos" class="py-12 px-6">
+            <div class="container mx-auto">
+                <div class="text-center mb-16 max-w-2xl mx-auto fade-in">
+                    <span class="text-sm font-bold uppercase text-vittale-blue tracking-widest">O QUE FAZEMOS</span>
+                    <h2 class="text-4xl md:text-6xl font-black mt-4 tracking-tight">Soluções de Alta Performance</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Card 1 -->
+                    <!-- CARD ATUALIZADO -->
+                    <div class="bg-white/5 border border-white/10 rounded-3xl backdrop-blur-lg shadow-2xl transition-all duration-300 hover:border-white/20 hover:scale-[1.02] p-8 fade-in">
+                        <div class="text-5xl mb-4">🚀</div>
+                        <h3 class="text-2xl font-bold mb-4">Tráfego Pago & Performance</h3>
+                        <p class="text-gray-300">A força que move o crescimento. Aqui, estratégia e dados se unem para levar sua marca às pessoas certas, ampliando alcance, visibilidade e conversões. Mais do que anúncios, criamos presença que gera resultado real.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <!-- CARD ATUALIZADO -->
+                    <div class="bg-white/5 border border-white/10 rounded-3xl backdrop-blur-lg shadow-2xl transition-all duration-300 hover:border-white/20 hover:scale-[1.02] p-8 fade-in" style="animation-delay: 0.2s;">
+                        <div class="text-5xl mb-4">🎨</div>
+                        <h3 class="text-2xl font-bold mb-4">Branding & Design Criativo</h3>
+                        <p class="text-gray-300">A identidade é a alma de tudo. Transformamos essência em imagem, emoção em design, criando marcas que respiram propósito, estética e personalidade. Cada detalhe visual comunica quem você é, E faz sua marca ser lembrada.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <!-- CARD ATUALIZADO -->
+                    <div class="bg-white/5 border border-white/10 rounded-3xl backdrop-blur-lg shadow-2xl transition-all duration-300 hover:border-white/20 hover:scale-[1.02] p-8 fade-in" style="animation-delay: 0.4s;">
+                        <div class="text-5xl mb-4">📈</div>
+                        <h3 class="text-2xl font-bold mb-4">SEO & Conteúdo</h3>
+                        <p class="text-gray-300">Palavras têm poder. Produzimos conteúdo estratégico e otimizado, pensado para gerar valor, engajar e fortalecer sua presença digital. Porque uma marca forte também é feita de histórias bem contadas.</p>
+                    </div>
+                    <!-- Card 4 -->
+                    <!-- CARD ATUALIZADO -->
+                    <div class="bg-white/5 border border-white/10 rounded-3xl backdrop-blur-lg shadow-2xl transition-all duration-300 hover:border-white/20 hover:scale-[1.02] p-8 fade-in" style="animation-delay: 0.4s;">
+                        <div class="text-5xl mb-4">🧭</div>
+                        <h3 class="text-2xl font-bold mb-4">Estratégia & Direção de Marca</h3>
+                        <p class="text-gray-300">O ponto de partida para tudo. Planejamos cada ação com intenção e visão de longo prazo, guiando a marca com clareza, propósito e coerência. Aqui, nada é acaso tudo é estratégia.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3: SOBRE NÓS -->
+        <section id="sobre" class="py-20 px-6">
+            <div class="container mx-auto flex flex-col md:flex-row items-center gap-12">
+                <!-- Imagem Placeholder -->
+                <div class="md:w-1/2 w-full fade-in">
+                    <img src="timevittale.png" 
+                         alt="Equipe VITTALE" 
+                         class="rounded-3xl shadow-2xl w-full border border-white/10">
+                </div>
+                
+                <!-- Texto -->
+                <div class="md:w-1/2 fade-in" style="animation-delay: 0.2s;">
+                    <span class="text-sm font-bold uppercase text-vittale-blue tracking-widest">A AGÊNCIA</span>
+                    <h2 class="text-4xl md:text-6xl font-black mt-4 tracking-tight leading-tight">
+                        Não somos apenas
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-vittale-blue to-vittale-light-blue">mais uma</span> agência.
+                    </h2>
+                    <p class="text-lg text-gray-300 mt-6 mb-8">
+                        A VITTALE nasceu da obsessão por resultados. Em um mercado cheio de promessas vazias, focamos em dados, transparência e criatividade para construir parcerias de longo prazo.
+                        <br><br>
+                        Somos uma extensão do seu time, dedicados a entender seu negócio e entregar crescimento real.
+                    </p>
+                    <!-- Stats -->
+                    <div class="grid grid-cols-2 gap-6 border-t border-white/10 pt-8">
+                        <div>
+                            <span class="text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-vittale-blue to-vittale-light-blue">+50</span>
+                            <p class="text-gray-400">Clientes Ativos</p>
+                        </div>
+                        <div>
+                            <span class="text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-vittale-blue to-vittale-light-blue">99%</span>
+                            <p class="text-gray-400">Retenção</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 4: CASES DE SUCESSO -->
+        <section id="projetos" class="py-20 px-6">
+            <div class="container mx-auto">
+                <div class="text-center mb-16 max-w-3xl mx-auto fade-in">
+                    <span class="text-sm font-bold uppercase text-vittale-blue tracking-widest">PORTFÓLIO</span>
+                    <h2 class="text-4xl md:text-6xl font-black mt-4 tracking-tight">Cases de sucesso da Vittale</h2>
+                </div>
+
+                <div class="space-y-16">
+
+                    <div class="bg-white/5 border border-white/10 rounded-3xl backdrop-blur-lg shadow-2xl p-8 md:p-12 flex flex-col md:flex-row gap-8 md:gap-12 items-center fade-in">
+                        <div class="md:w-5/12 w-full">
+                            <div class="rounded-3xl border border-white/10 overflow-hidden">
+                                <img src="espetinho.png" alt="Logo Espetinhos Curitiba" class="w-full h-full object-contain">
+                            </div>
+                        </div>
+                        <div class="md:w-7/12 w-full">
+                            <h3 class="text-3xl font-bold">Espetinhos Curitiba</h3>
+                            
+                            <div id="case-details-1" class="hidden md:block space-y-6 mt-6">
+                                <h4 class="text-lg font-bold text-vittale-blue mb-2">O desafio</h4>
+                                <p class="text-gray-300">A Espetinhos Curitiba queria dar um passo à frente: modernizar a presença digital, padronizar a identidade visual das lojas autorizadas e atrair mais clientes para os pontos físicos.</p>
+                                
+                                <h4 class="text-lg font-bold text-vittale-blue mb-2">O que a Vittale fez</h4>
+                                <p class="text-gray-300">Recriamos a identidade visual e a comunicação da marca, trazendo uma linguagem leve, próxima e autêntica do jeito que o público da Espetinhos fala. Além disso, estruturamos um novo planejamento de conteúdo mensal, focado em atração, engajamento e vendas, com criativos humanizados, vídeos curtos e materiais exclusivos de dark post. No tráfego pago, segmentamos campanhas por região e interesse, garantindo mais visibilidade e resultados reais.</p>
+                                
+                                <blockquote class="mt-8 border-l-4 border-vittale-blue pl-4 italic text-gray-300">
+                                    “Modernizar a comunicação foi o primeiro passo. O resultado veio rápido: mais engajamento, mais fluxo e uma marca mais forte.”
+                                </blockquote>
+                            </div>
+
+                            <h4 class="text-lg font-bold text-vittale-blue mt-6 mb-2">Os resultados</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-300">
+                                <li>+165% de crescimento em alcance orgânico em 60 dias</li>
+                                <li>+85% de aumento nas interações com os posts</li>
+                                <li>Redução de 35% no custo por resultado nas campanhas locais</li>
+                            </ul>
+
+                            <button data-toggle="case-details-1" class="mt-6 text-vittale-light-blue font-bold md:hidden">
+                                Saber mais...
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/5 border border-white/10 rounded-3xl backdrop-blur-lg shadow-2xl p-8 md:p-12 flex flex-col md:flex-row-reverse gap-8 md:gap-12 items-center fade-in">
+                        <div class="md:w-5/12 w-full">
+                            <div class="rounded-3xl border border-white/10 overflow-hidden">
+                                <img src="acai.png" alt="Logo Açaí Express CWB" class="w-full h-full object-contain">
+                            </div>
+                        </div>
+                        <div class="md:w-7/12 w-full">
+                            <h3 class="text-3xl font-bold">Açaí Express CWB</h3>
+                            
+                            <div id="case-details-2" class="hidden md:block space-y-6 mt-6">
+                                <h4 class="text-lg font-bold text-vittale-blue mb-2">O desafio</h4>
+                                <p class="text-gray-300">Lançar novas unidades e fortalecer a presença da marca em plena alta temporada quando a concorrência é forte e a atenção do público é disputada.</p>
+                                
+                                <h4 class="text-lg font-bold text-vittale-blue mb-2">O que a Vittale fez</h4>
+                                <p class="text-gray-300">Antes de criar, a gente estudou. Fizemos um benchmarking detalhado para entender o mercado e identificar as oportunidades que deixariam o Açaí Express à frente. Depois, desenhamos uma campanha integrada: branding local com identidade visual exclusiva, conteúdos com prova social (Reels e Stories reais) e um plano de tráfego pago voltado pra reconhecimento e fluxo físico nas unidades. Testamos criativos, ajustamos ofertas e otimizamos a performance até chegar na combinação perfeita.</p>
+                                
+                                <blockquote class="mt-8 border-l-4 border-vittale-blue pl-4 italic text-gray-300">
+                                    “Estudo, estratégia e execução foi assim que o Açaí Express virou referência em lançamento de unidade.”
+                                </blockquote>
+                            </div>
+
+                            <h4 class="text-lg font-bold text-vittale-blue mt-6 mb-2">Os resultados</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-300">
+                                <li>+210% de crescimento em seguidores no mês de lançamento</li>
+                                <li>+50% de aumento nas vendas das novas unidades</li>
+                                <li>Campanha de inauguração esgotou o estoque em 1 dia</li>
+                            </ul>
+
+                            <button data-toggle="case-details-2" class="mt-6 text-vittale-light-blue font-bold md:hidden">
+                                Saber mais...
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 5: CTA FINAL -->
+        <section id="contato" class="py-12 px-6">
+            <div class="container mx-auto max-w-4xl text-center">
+                <!-- CARD ATUALIZADO -->
+                <div class="bg-white/5 border border-white/10 rounded-3xl backdrop-blur-lg shadow-2xl transition-all duration-300 hover:border-white/20 hover:scale-[1.02] p-12 md:p-20 fade-in">
+                    <h2 class="text-4xl md:text-6xl font-black tracking-tight leading-tight">
+                        Pronto para
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-vittale-blue to-vittale-light-blue">decolar?</span>
+                    </h2>
+                    <p class="text-xl text-gray-300 mt-6 mb-10">
+                        Vamos agendar uma conversa sem compromisso e descobrir como a VITTALE pode acelerar o crescimento da sua empresa.
+                    </p>
+                    <!-- BOTÃO PRIMÁRIO ATUALIZADO -->
+                    <div class="flex justify-center w-full">
+                        <a href="https://wa.me/message/N4FRNLUCC7ZLL1" class="w-full py-3 sm:px-8 bg-gradient-to-r from-vittale-blue to-vittale-light-blue text-true-white font-bold rounded-full transition-all duration-300 shadow-lg shadow-vittale-blue/30 hover:scale-105 hover:shadow-xl hover:shadow-vittale-blue/50 hover:brightness-110 text-lg">
+                            Agendar Reunião Gratuita
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="mt-20 py-12 px-6 border-t border-white/10">
+            <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+                <div class="flex flex-col items-center md:items-start">
+                    <a href="#home" class="text-3xl font-black tracking-tighter">
+                        <img src="logo-offwhite.png" alt="VITTALE Logo" class="h-8 w-auto">
+                    </a>
+                    <p class="text-gray-400 text-sm mt-2">© 2025 VITTALE. Transformando cliques em resultados.</p>
+                </div>
+                <div class="flex space-x-6 mt-6 md:mt-0 font-semibold text-gray-300">
+                    <a href="https://www.instagram.com/vittale.mkt?igsh=MTdldXBmNjBxN21iMw==" class="hover:text-white">Instagram</a>
+                    <a href="https://www.linkedin.com/company/vittalemkt/?viewAsMember=true" class="hover:text-white">LinkedIn</a>
+                    <a href="https://wa.me/message/N4FRNLUCC7ZLL1" class="hover:text-white">WhatsApp</a>
+                </div>
+            </div>
+        </footer>
+
+    </div> <!-- Fim do Wrapper Principal -->
+
+    <!-- JAVASCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- LÓGICA DO MENU MOBILE ---
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = mobileMenu.querySelectorAll('.nav-link');
+
+            // Função para alternar o menu
+            const toggleMenu = () => {
+                mobileMenu.classList.toggle('hidden');
+                document.body.style.overflow = mobileMenu.classList.contains('hidden') ? 'auto' : 'hidden';
+                // Muda o ícone do botão
+                if (mobileMenu.classList.contains('hidden')) {
+                    menuBtn.innerHTML = `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>`;
+                } else {
+                    menuBtn.innerHTML = `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>`;
+                }
+            };
+
+            menuBtn.addEventListener('click', toggleMenu);
+            // Fecha o menu ao clicar em um link
+            navLinks.forEach(link => {
+                link.addEventListener('click', toggleMenu);
+            });
+
+            // --- LÓGICA DA ANIMAÇÃO FADE-IN ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1 // Ativa quando 10% do elemento está visível
+            });
+
+            // Observa todos os elementos com a classe .fade-in
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach((el) => observer.observe(el));
+
+            // --- LÓGICA DO "SABER MAIS" NOS CASES ---
+            const toggleButtons = document.querySelectorAll('button[data-toggle]');
+            
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetId = button.getAttribute('data-toggle');
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        const isHidden = targetElement.classList.contains('hidden');
+                        
+                        if (isHidden) {
+                            targetElement.classList.remove('hidden');
+                            button.textContent = 'Saber menos';
+                        } else {
+                            targetElement.classList.add('hidden');
+                            button.textContent = 'Saber mais...';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
