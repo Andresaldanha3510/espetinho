@@ -101,16 +101,22 @@
         <header id="header" class="fixed w-full top-0 z-50">
             <nav class="container mx-auto px-6 py-5 flex justify-between items-center bg-vittale-dark/70 backdrop-blur-md rounded-b-3xl border-b border-l border-r border-white/10 shadow-lg">
                 <!-- Logo -->
-                <a href="#home" class="text-3xl font-black tracking-tighter">
-                    <!-- O logo 'logo-offwhite.png' agora combina perfeitamente -->
-                    <img src="logo-offwhite.png" alt="VITTALE Logo" class="h-8 w-auto">
+                <a href="#home" class="flex flex-row items-center gap-4 group">
+                    <!-- Logo Escrito -->
+                    <img src="logo-offwhite.png" alt="VITTALE Logo" class="h-6 md:h-7 w-auto">
+                    
+                    <!-- Separador Vertical (Linha fina) -->
+                    <div class="h-6 w-px bg-white/20 hidden sm:block"></div>
+                    
+                    <!-- Ícone Redondo -->
+                    <img src="ICONE WHITE.png" alt="VITTALE Icon" class="h-8 w-auto transition-transform duration-500 group-hover:rotate-12">
                 </a>
 
                 <!-- Menu Desktop -->
                 <div class="hidden md:flex items-center space-x-8 font-semibold text-sm">
                     <!-- text-white agora é #FFF4D2 -->
                     <a href="#servicos" class="hover:text-white transition-colors">Serviços</a>
-                    <a href="#sobre" class="hover:text-white transition-colors">A Agência</a>
+                    <a href="#sobre" class="hover:text-white transition-colors">A Vittale</a>
                     <a href="#projetos" class="hover:text-white transition-colors">Projetos</a>
                     <!-- bg-white agora é #FFF4D2 -->
                     <!-- MUDADO: Efeito de hover atualizado para mais destaque -->
@@ -131,7 +137,7 @@
             <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-vittale-dark/90 backdrop-blur-xl z-40">
                 <nav class="flex flex-col items-center justify-center h-full space-y-8 text-2xl font-bold">
                     <a href="#servicos" class="nav-link">Serviços</a>
-                    <a href="#sobre" class="nav-link">A Agência</a>
+                    <a href="#sobre" class="nav-link">A Vittale</a>
                     <a href="#projetos" class="nav-link">Projetos</a>
                     <!-- BOTÃO PRIMÁRIO ATUALIZADO -->
                     <a href="https://wa.me/message/N4FRNLUCC7ZLL1" class="px-8 py-3 bg-gradient-to-r from-vittale-blue to-vittale-light-blue text-true-white font-bold rounded-full transition-all duration-300 shadow-lg shadow-vittale-blue/30 hover:scale-105 hover:shadow-xl hover:shadow-vittale-blue/50 hover:brightness-110 mt-8 ">Fale Conosco</a>
@@ -146,14 +152,14 @@
                 <img src="logo-offwhite.png" alt="Logo VITTALE" 
                      class="mx-auto mb-8 h-24 w-auto shadow-xl fade-in">
 
-                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-none mb-8 fade-in" style="animation-delay: 0.2s;">
-                    Elevamos sua marca
+                <h1 class="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-none mb-8 fade-in" style="animation-delay: 0.2s;">
+                    <span class="whitespace-nowrap">O MARKETING VITAL</span>
                     <br>
-                    ao <span class="bg-clip-text text-transparent bg-gradient-to-r from-vittale-blue to-vittale-light-blue">próximo nível</span>
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-vittale-blue to-vittale-light-blue">PARA O SEU NEGÓCIO</span>
                 </h1>
                 <!-- text-gray-300 agora é o novo tom com opacidade -->
                 <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto fade-in" style="animation-delay: 0.4s;">
-                    Somos a VITTALE. A agência de marketing digital que transforma cliques em resultados reais.
+                    Entregamos resultados que transformam através de posicionamento consistente, soluções criativas e estratégias.
                 </p>
                 <div class="flex flex-col md:flex-row justify-center gap-4 fade-in" style="animation-delay: 0.6s;">
                     <!-- BOTÃO PRIMÁRIO ATUALIZADO -->
@@ -173,37 +179,77 @@
             <div class="container mx-auto">
                 <div class="text-center mb-16 max-w-2xl mx-auto fade-in">
                     <span class="text-sm font-bold uppercase text-vittale-blue tracking-widest">O QUE FAZEMOS</span>
-                    <h2 class="text-4xl md:text-6xl font-black mt-4 tracking-tight">Soluções de Alta Performance</h2>
+                    <h2 class="text-4xl md:text-6xl font-black mt-4 tracking-tight">Tudo o que sua marca precisa no digital.</h2>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Card 1 -->
-                    <!-- CARD ATUALIZADO -->
-                    <div class="bg-white/5 border border-white/10 rounded-3xl backdrop-blur-lg shadow-2xl transition-all duration-300 hover:border-white/20 hover:scale-[1.02] p-8 fade-in">
-                        <div class="text-5xl mb-4">🚀</div>
-                        <h3 class="text-2xl font-bold mb-4">Tráfego Pago & Performance</h3>
-                        <p class="text-gray-300">A força que move o crescimento. Aqui, estratégia e dados se unem para levar sua marca às pessoas certas, ampliando alcance, visibilidade e conversões. Mais do que anúncios, criamos presença que gera resultado real.</p>
+                    <!-- Card 1: Marketing -->
+                    <div class="bg-white/5 border border-white/10 rounded-3xl backdrop-blur-lg shadow-2xl transition-all duration-300 hover:border-white/20 hover:scale-[1.02] p-8 fade-in flex flex-col h-full" style="animation-delay: 0.2s;">
+                        <div class="mb-4">
+                            <!-- Ícone comentado ou ativo conforme necessidade -->
+                            <!-- <img src="marketing.png" alt="Ícone Marketing" class="h-12 w-12 object-contain"> -->
+                        </div>
+                        <h3 class="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-vittale-blue to-vittale-light-blue ">Marketing</h3>
+                        <p class="text-gray-300 mb-6">As pessoas compram marcas que conversam com elas e é exatamente isso que construímos. Criamos estratégia, conteúdo e planejamento que aumentam sua visibilidade e tornam sua comunicação mais clara e relevante.</p>
+                        
+                        <!-- LISTA DE TÓPICOS -->
+                        <div class="mt-auto space-y-3 pt-6 border-t border-white/10">
+                            <div class="text-lg font-medium border-b border-white/10 pb-2">Mídias Sociais</div>
+                            <div class="text-lg font-medium border-b border-white/10 pb-2">Inbound Marketing</div>
+                            <div class="text-lg font-medium border-b border-white/10 pb-2">Conteúdo</div>
+                            <div class="text-lg font-medium">Blog</div>
+                        </div>
                     </div>
-                    <!-- Card 2 -->
-                    <!-- CARD ATUALIZADO -->
-                    <div class="bg-white/5 border border-white/10 rounded-3xl backdrop-blur-lg shadow-2xl transition-all duration-300 hover:border-white/20 hover:scale-[1.02] p-8 fade-in" style="animation-delay: 0.2s;">
-                        <div class="text-5xl mb-4">🎨</div>
-                        <h3 class="text-2xl font-bold mb-4">Branding & Design Criativo</h3>
-                        <p class="text-gray-300">A identidade é a alma de tudo. Transformamos essência em imagem, emoção em design, criando marcas que respiram propósito, estética e personalidade. Cada detalhe visual comunica quem você é, E faz sua marca ser lembrada.</p>
+
+                    <!-- Card 2: Design / Branding -->
+                    <div class="bg-white/5 border border-white/10 rounded-3xl backdrop-blur-lg shadow-2xl transition-all duration-300 hover:border-white/20 hover:scale-[1.02] p-8 fade-in flex flex-col h-full" style="animation-delay: 0.2s;">
+                        <div class="mb-4">
+                            <!-- <img src="design.png" alt="Ícone Design" class="h-12 w-12 object-contain"> -->
+                        </div>
+                        <h3 class="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-vittale-blue to-vittale-light-blue ">Design / Branding</h3>
+                        <p class="text-gray-300 mb-6">Sua marca precisa ser lembrada e bem lembrada. Criamos identidades visuais fortes, designs modernos e materiais que traduzem quem você é. Cada detalhe é pensado para gerar conexão, valor e reconhecimento.</p>
+                        
+                        <!-- LISTA DE TÓPICOS -->
+                        <div class="mt-auto space-y-3 pt-6 border-t border-white/10">
+                            <div class="text-lg font-medium border-b border-white/10 pb-2">Branding</div>
+                            <div class="text-lg font-medium border-b border-white/10 pb-2">Identidade Visual</div>
+                            <div class="text-lg font-medium border-b border-white/10 pb-2">Comunicação Visual</div>
+                            <div class="text-lg font-medium">Produção de Vídeos</div>
+                        </div>
                     </div>
-                    <!-- Card 3 -->
-                    <!-- CARD ATUALIZADO -->
-                    <div class="bg-white/5 border border-white/10 rounded-3xl backdrop-blur-lg shadow-2xl transition-all duration-300 hover:border-white/20 hover:scale-[1.02] p-8 fade-in" style="animation-delay: 0.4s;">
-                        <div class="text-5xl mb-4">📈</div>
-                        <h3 class="text-2xl font-bold mb-4">SEO & Conteúdo</h3>
-                        <p class="text-gray-300">Palavras têm poder. Produzimos conteúdo estratégico e otimizado, pensado para gerar valor, engajar e fortalecer sua presença digital. Porque uma marca forte também é feita de histórias bem contadas.</p>
+
+                    <!-- Card 3: Web / Sites -->
+                    <div class="bg-white/5 border border-white/10 rounded-3xl backdrop-blur-lg shadow-2xl transition-all duration-300 hover:border-white/20 hover:scale-[1.02] p-8 fade-in flex flex-col h-full" style="animation-delay: 0.4s;">
+                        <div class="mb-4">
+                            <!-- <img src="web.png" alt="Ícone Web" class="h-12 w-12 object-contain"> -->
+                        </div>
+                        <h3 class="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-vittale-blue to-vittale-light-blue ">Web / Sites</h3>
+                        <p class="text-gray-300 mb-6">Seu site é sua vitrine digital, e ela precisa trabalhar por você. Desenvolvemos sites modernos, intuitivos e otimizados para conversão. Tudo pensado para entregar uma navegação simples, rápida e envolvente.</p>
+                        
+                        <!-- LISTA DE TÓPICOS -->
+                        <div class="mt-auto space-y-3 pt-6 border-t border-white/10">
+                            <div class="text-lg font-medium border-b border-white/10 pb-2">Sites Institucionais</div>
+                            <div class="text-lg font-medium border-b border-white/10 pb-2">E-commerce</div>
+                            <div class="text-lg font-medium border-b border-white/10 pb-2">Landing Pages</div>
+                            <div class="text-lg font-medium">Hotsites</div>
+                        </div>
                     </div>
-                    <!-- Card 4 -->
-                    <!-- CARD ATUALIZADO -->
-                    <div class="bg-white/5 border border-white/10 rounded-3xl backdrop-blur-lg shadow-2xl transition-all duration-300 hover:border-white/20 hover:scale-[1.02] p-8 fade-in" style="animation-delay: 0.4s;">
-                        <div class="text-5xl mb-4">🧭</div>
-                        <h3 class="text-2xl font-bold mb-4">Estratégia & Direção de Marca</h3>
-                        <p class="text-gray-300">O ponto de partida para tudo. Planejamos cada ação com intenção e visão de longo prazo, guiando a marca com clareza, propósito e coerência. Aqui, nada é acaso tudo é estratégia.</p>
+
+                    <!-- Card 4: Tráfego Pago -->
+                    <div class="bg-white/5 border border-white/10 rounded-3xl backdrop-blur-lg shadow-2xl transition-all duration-300 hover:border-white/20 hover:scale-[1.02] p-8 fade-in flex flex-col h-full" style="animation-delay: 0.4s;">
+                        <div class="mb-4">
+                            <!-- <img src="trafego.png" alt="Ícone Tráfego" class="h-12 w-12 object-contain"> -->
+                        </div>
+                        <h3 class="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-vittale-blue to-vittale-light-blue ">Tráfego Pago</h3>
+                        <p class="text-gray-300 mb-6">Anúncio não é gasto. É investimento, quando feito do jeito certo. Usamos dados, tecnologia e segmentação inteligente para alcançar quem realmente está pronto para comprar.</p>
+                        
+                        <!-- LISTA DE TÓPICOS -->
+                        <div class="mt-auto space-y-3 pt-6 border-t border-white/10">
+                            <div class="text-lg font-medium border-b border-white/10 pb-2">Instagram | Facebook Ads</div>
+                            <div class="text-lg font-medium border-b border-white/10 pb-2">Google Ads</div>
+                            <div class="text-lg font-medium border-b border-white/10 pb-2">LinkedIn Ads</div>
+                            <div class="text-lg font-medium">TikTok Ads</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -221,13 +267,13 @@
                 
                 <!-- Texto -->
                 <div class="md:w-1/2 fade-in" style="animation-delay: 0.2s;">
-                    <span class="text-sm font-bold uppercase text-vittale-blue tracking-widest">A AGÊNCIA</span>
+                    <span class="text-sm font-bold uppercase text-vittale-blue tracking-widest">A VITTALE</span>
                     <h2 class="text-4xl md:text-6xl font-black mt-4 tracking-tight leading-tight">
                         Não somos apenas
                         <span class="bg-clip-text text-transparent bg-gradient-to-r from-vittale-blue to-vittale-light-blue">mais uma</span> agência.
                     </h2>
                     <p class="text-lg text-gray-300 mt-6 mb-8">
-                        A VITTALE nasceu da obsessão por resultados. Em um mercado cheio de promessas vazias, focamos em dados, transparência e criatividade para construir parcerias de longo prazo.
+                        A Vittale nasceu quando percebemos que, ao resolver um problema real, descobrimos nossa maior oportunidade: dar direção para marcas que só precisavam ser vistas do jeito certo.
                         <br><br>
                         Somos uma extensão do seu time, dedicados a entender seu negócio e entregar crescimento real.
                     </p>
@@ -366,6 +412,18 @@
                 </div>
             </div>
         </footer>
+
+        <!-- WHATSAPP FLUTUANTE -->
+        <a href="https://wa.me/message/N4FRNLUCC7ZLL1" 
+           target="_blank" 
+           class="fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:scale-110 hover:bg-green-600 transition-all duration-300 flex items-center justify-center group">
+            <!-- Ícone WhatsApp SVG -->
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            <!-- Efeito de pulso -->
+            <span class="absolute w-full h-full bg-green-500 rounded-full opacity-20 animate-pulse-slow"></span>
+        </a>
 
     </div> <!-- Fim do Wrapper Principal -->
 
